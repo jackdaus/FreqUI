@@ -1,0 +1,11 @@
+<div *ngFor="let message of messages">
+  {{message}}
+</div>
+
+<div>
+  <mat-form-field>
+    <mat-label>Input Field</mat-label>
+    <input matInput [(ngModel)]="newMsg">
+  </mat-form-field>
+  <button mat-button (click)="onSendMsg()">Send</button>
+</div>

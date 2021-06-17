@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
-import { SignalrService } from '../shared/signalr.service';
+import { RoomService } from '../shared/room.service';
 
 @Component({
 	selector: 'app-join-room',
 	templateUrl: './join-room.component.html',
-	styleUrls: ['./join-room.component.css']
+	styleUrls: ['./join-room.component.scss']
 })
 export class JoinRoomComponent implements OnInit {
 	joinGameForm = new FormGroup({
@@ -15,25 +14,16 @@ export class JoinRoomComponent implements OnInit {
 	});
 	
 	constructor(
-		private _signalrService: SignalrService,
-		private _router: Router,
+		private _roomService: RoomService,
 	) { } 
 
 	ngOnInit(): void {
-		this._signalrService.connection.on("errorRoomNotFound", (roomCode: string) => {
-			console.log("Error, room code not found!");
-		});
-
-		this._signalrService.connection.on("joinSuccess", (roomCode: string) => {
-			console.log('join successful!');
-			this._router.navigate(['waiting-room', roomCode]);
-		});
 	}
 	
 	async onSubmit() {
 		const name = this.joinGameForm.get("name")?.value;
 		const roomCode = this.joinGameForm.get("roomCode")?.value;
-		this._signalrService.connection.send("joinGame", roomCode, name);
+		this._roomService.joinRoom(roomCode, name);
 	}
 
 

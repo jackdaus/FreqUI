@@ -1,0 +1,17 @@
+<div class="game-creator-container">
+  <h2>Create a game</h2>
+  <div class="form-fields">
+    <mat-form-field appearance="outline">
+      <mat-label>Game type</mat-label>
+      <mat-select [(ngModel)]="gameType">
+        <mat-option value="ORIGINAL">Original</mat-option>
+        <mat-option value="MOREFUN">More fun version</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <button mat-stroked-button [disabled]="!gameType" (click)="onCreateRoom()" color="primary">
+      <mat-icon>add</mat-icon>
+      Create Game
+    </button>
+  </div>
+</div>

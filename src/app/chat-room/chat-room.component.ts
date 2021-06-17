@@ -19,9 +19,9 @@ export class ChatRoomComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._signalrService.connection.on("messageReceived", (username: string, message: string) => {
-      this.messages.push(message);
-    });
+    // this._signalrService.connection.on("messageReceived", (username: string, message: string) => {
+    //   this.messages.push(message);
+    // });
   }
 
   onSendMsg() {

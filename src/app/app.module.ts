@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,11 +14,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select'
 
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { JoinRoomComponent } from './join-room/join-room.component';
-import { RoomManagerComponent } from './room-manager/room-manager.component';
 import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
+import { GameCreatorComponent } from './game-creator/game-creator.component';
 
 
 @NgModule({
@@ -25,8 +27,8 @@ import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
     AppComponent,
     ChatRoomComponent,
     JoinRoomComponent,
-    RoomManagerComponent,
-    WaitingRoomComponent
+    WaitingRoomComponent,
+    GameCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,9 @@ import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

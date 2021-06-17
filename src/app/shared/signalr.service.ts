@@ -15,7 +15,9 @@ export class SignalrService {
 
     this.connection
     .start()
-    .then(() => console.log('Connection started'))
+    .then(() => {
+      console.log('Connection started');
+    })
     .catch(err => console.log('Error while starting connection: ' + err));
   }
 

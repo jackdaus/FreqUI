@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { GameCreatorComponent } from './game-creator/game-creator.component';
 import { JoinRoomComponent } from './join-room/join-room.component';
-import { RoomManagerComponent } from './room-manager/room-manager.component';
+import { WaitingRoomResolver } from './waiting-room/waiting-room-resolver.service';
 import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
 
 const routes: Routes = [
@@ -15,12 +16,15 @@ const routes: Routes = [
     component: JoinRoomComponent
   },
   {
-    path: 'room-manager',
-    component: RoomManagerComponent
+    path: 'game-creator',
+    component: GameCreatorComponent
   },
   {
     path: 'waiting-room/:roomId',
-    component: WaitingRoomComponent
+    component: WaitingRoomComponent,
+    resolve: {
+      game: WaitingRoomResolver
+    }
   }
 ];
 

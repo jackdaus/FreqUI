@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Data, Route } from '@angular/router';
-import { Game } from '../shared/model.model';
+import { Subscription } from 'rxjs';
+import { Game, Player } from '../shared/model.model';
 import { RoomService } from '../shared/room.service';
 
 @Component({
@@ -8,10 +9,14 @@ import { RoomService } from '../shared/room.service';
   templateUrl: './waiting-room.component.html',
   styleUrls: ['./waiting-room.component.scss']
 })
-export class WaitingRoomComponent implements OnInit {
+export class WaitingRoomComponent implements OnInit, OnDestroy {
 
-  players: string[] = [];
+  players: Player[] = []
   game: Game;
+  loggedPlayer: Player;
+
+  loggedPlayer$: Subscription;
+  players$: Subscription;
 
   constructor(
     private _roomService: RoomService,
@@ -20,16 +25,30 @@ export class WaitingRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this._route.data.subscribe((data: Data) => {
-      console.log(data.game);
-      console.log('in wiaiting room data promise')
-
+      this.game = data.game;
     });
 
-    this._roomService.playerNames.subscribe(names => {
-      console.log('from waiting room: ' + names);
-      this.players = names;
+    this.loggedPlayer$ = this._roomService.loggedPlayer.subscribe(player => {
+      this.loggedPlayer = player;
     });
 
+    this.players$ = this._roomService.players.subscribe(players => {
+      this.players = players;
+    });
+
+  }
+
+  ngOnDestroy(): void {
+    this.loggedPlayer$?.unsubscribe();
+    this.players$?.unsubscribe();
+  }
+
+  onUsernameChange(newUsername: any) {
+    this._roomService.changeName(newUsername);
+  }
+
+  trackByFn(index: number, player: Player) {
+    return player.id;
   }
 
 }

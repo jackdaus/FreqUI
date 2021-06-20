@@ -17,8 +17,10 @@ export enum Phase {
 }
 
 export interface Player {
-  Id: string,
-  ConnectionId: string,
-  Username: string,
-  Points: number,
+  id: string,
+  connectionId: string,
+  username: string,
+  isOwner: boolean,
+  position: number,
+  points: number,
 }

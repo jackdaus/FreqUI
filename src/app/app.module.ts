@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select'
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { JoinRoomComponent } from './join-room/join-room.component';
@@ -44,7 +45,8 @@ import { GameCreatorComponent } from './game-creator/game-creator.component';
     MatCardModule,
     ReactiveFormsModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

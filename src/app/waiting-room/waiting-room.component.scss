@@ -1,0 +1,25 @@
+.waiting-room-frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.waiting-room-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  flex-basis: 40em;
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  list-style-position: inside;
+  text-overflow: ellipsis;
+  max-width: 16em;
+  overflow: hidden;
+}

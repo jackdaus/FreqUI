@@ -1,7 +1,24 @@
-<p>waiting-room ...</p>
-<h3>players</h3>
-<div>
-  <ul>
-    <li *ngFor="let name of players">{{name}}</li>
-  </ul>
+<div class="waiting-room-frame">
+  <div class="waiting-room-content">
+    <div>
+      <h2>Room: {{game.roomCode}}</h2>
+      <h3>Players</h3>
+      <div>
+        <ul>
+          <li *ngFor="let player of players; trackBy: trackByFn">
+            <span *ngIf="player.isOwner" matTooltip="Game host">👑</span>
+            <ng-container *ngIf="player.id == loggedPlayer.id; else elseBlock">
+              <input [(ngModel)]="loggedPlayer.username" (ngModelChange)="onUsernameChange($event)">
+            </ng-container>
+            <ng-template #elseBlock>
+              {{player.username}}
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="loggedPlayer.isOwner">
+      <button mat-raised-button color="primary">Start</button>
+    </div>
+  </div>
 </div>

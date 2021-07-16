@@ -18,7 +18,7 @@
       </div>
     </div>
     <div *ngIf="loggedPlayer.isOwner">
-      <button mat-raised-button color="primary">Start</button>
+      <button mat-raised-button color="primary" (click)="onStart()">Start</button>
     </div>
   </div>
 </div>

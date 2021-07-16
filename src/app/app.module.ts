@@ -16,11 +16,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { JoinRoomComponent } from './join-room/join-room.component';
 import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
 import { GameCreatorComponent } from './game-creator/game-creator.component';
+import { GameRoomComponent } from './game-room/game-room.component';
+import { FrequencyControllerComponent } from './frequency-controller/frequency-controller.component';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { GameCreatorComponent } from './game-creator/game-creator.component';
     ChatRoomComponent,
     JoinRoomComponent,
     WaitingRoomComponent,
-    GameCreatorComponent
+    GameCreatorComponent,
+    GameRoomComponent,
+    FrequencyControllerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { GameCreatorComponent } from './game-creator/game-creator.component';
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

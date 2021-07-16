@@ -1,0 +1,15 @@
+.clue-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+app-frequency-controller {
+  width: 100%;
+}
+
+.gutters {
+  > * {
+    padding-right: 1em;
+  }
+}

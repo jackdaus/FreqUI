@@ -1,0 +1,27 @@
+<div class="debug">Phase: {{game?.phase}}</div>
+<div *ngIf="game.phase == Phase.AxisIdeation">
+  <p>Enter an idea for an axis. This will be presented to other players.</p>
+  <form (ngSubmit)="submitAxisIdea()" [formGroup]="axisForm" class="gutters">
+    <mat-form-field>
+      <mat-placeholder>Left Axis</mat-placeholder>
+      <input matInput formControlName="leftWordControl" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-placeholder>Right Axis</mat-placeholder>
+      <input matInput formControlName="rightWordControl" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!axisForm.valid">Submit</button>
+  </form>
+</div>
+
+<div *ngIf="game.phase == Phase.ClueGiving">
+  <form (ngSubmit)="submitClue()" class="clue-form gutters">
+      <mat-form-field>
+        <mat-placeholder>Clue word</mat-placeholder>
+        <input matInput [formControl]="clueControl">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+    <app-frequency-controller [leftWord]="clueGivingAxis.leftWord" [rightWord]="clueGivingAxis.rightWord"
+      [spinnerAngle]="clueGivingAxis.targetNumber" [showSlider]="false"></app-frequency-controller>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Data, Route } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { GameService } from '../shared/game.service';
 import { Game, Player } from '../shared/model.model';
 import { RoomService } from '../shared/room.service';
 
@@ -21,6 +22,7 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
   constructor(
     private _roomService: RoomService,
     private _route: ActivatedRoute,
+    private _gameService: GameService,
   ) { }
 
   ngOnInit(): void {
@@ -35,7 +37,6 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
     this.players$ = this._roomService.players.subscribe(players => {
       this.players = players;
     });
-
   }
 
   ngOnDestroy(): void {
@@ -49,6 +50,10 @@ export class WaitingRoomComponent implements OnInit, OnDestroy {
 
   trackByFn(index: number, player: Player) {
     return player.id;
+  }
+
+  onStart() {
+    this._gameService.startGame(this.game.id);
   }
 
 }

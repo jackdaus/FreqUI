@@ -8,7 +8,7 @@ export interface Game {
 
 export enum Phase {
   Registration,
-  Ideation,
+  AxisIdeation,
   ClueGiving,
   Guessing,
   RoundResults,
@@ -23,4 +23,15 @@ export interface Player {
   isOwner: boolean,
   position: number,
   points: number,
+}
+
+export interface Axis {
+  id: string;
+  gameId: string;
+  axisAuthorId: string;
+  leftWord: string;
+  rightWord: string;
+  targetNumber: number;
+  clue: string;
+  clueAuthorId: string;
 }
